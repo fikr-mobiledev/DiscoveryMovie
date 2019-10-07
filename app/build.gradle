@@ -1,0 +1,150 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.fikr.mobiledev.discoverymovie"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+        buildConfigField "String", "BASE_URL_IMAGE", '"https://image.tmdb.org/t/p/w500"'
+        buildConfigField "String", "API_KEY", '"d44b9b21dcc65ab36b827015a9196411"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+}
+
+ext {
+    androidx_version = '1.0.0'
+    androidx_test_version = '1.1.0'
+    appcompat_version = '1.1.0'
+    material_version = '1.0.0'
+    koin_version = '2.0.1'
+    scalable_version = "1.0.6"
+    glide_version = '4.9.0'
+    test_version = '1.1.1'
+    espresso_version = '3.2.0'
+    junit_version = '4.12'
+    hamcrest_version = '1.3'
+    mockito_version = '2.23.4'
+    dex_maker_version = "1.2"
+    idle_resource_version = '3.2.0'
+    constraint_version = '1.1.3'
+    arch_lifecycle_version = '2.2.0-alpha05'
+    arch_testing_version = '2.0.0'
+    gson_version = "2.8.5"
+    fan_version = '1.0.2'
+    coroutines_version = "1.3.1"
+    room_version = "2.2.0-rc01"
+    paging_version = "2.1.0"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+
+    // Dependencies for local unit tests
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrest_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "androidx.arch.core:core-testing:$arch_testing_version"
+
+    // Dependencies for Android unit tests
+    androidTestImplementation "junit:junit:$junit_version"
+    androidTestImplementation "org.mockito:mockito-core:$mockito_version"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+
+    // Android Testing Support Library's runner and rules
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_version"
+    androidTestImplementation "androidx.test:core:$androidx_test_version"
+    androidTestImplementation "androidx.test:rules:$androidx_test_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$arch_testing_version"
+
+    // Lifecycle ViewModel LiveData
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$arch_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata:$arch_lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$arch_lifecycle_version"
+
+    // Dependencies for Idle Resource
+    implementation "androidx.test.espresso:espresso-idling-resource:$idle_resource_version"
+
+    // Scalable
+    implementation "com.intuit.ssp:ssp-android:$scalable_version"
+    implementation "com.intuit.sdp:sdp-android:$scalable_version"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-scope:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+    implementation "org.koin:koin-android-ext:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    // FAN
+    implementation "com.amitshekhar.android:android-networking:$fan_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+    // FlycoTabs
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+
+    // Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+
+    // Grid Layout
+    implementation "androidx.gridlayout:gridlayout:$androidx_version"
+}

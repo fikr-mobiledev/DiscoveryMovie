@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DiscoveryMovie</string>
+    <string name="description">Description</string>
+    <string name="poster">poster</string>
+    <string name="oh_no">Oh no!</string>
+    <string name="something_went_wrong_please_try_again">Something went wrong. Please try again!</string>
+    <string name="try_again">Try Again</string>
+    <string name="favorite">Favorite</string>
+    <string name="discovery">Discovery</string>
+    <string name="item_not_found">Item Not Found</string>
+</resources>
